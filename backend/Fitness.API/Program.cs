@@ -1,4 +1,5 @@
 using Fitness.API.Extensions;
+using Fitness.API.Middlewares;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,7 +18,7 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-//app.UseCustomException();
+app.UseCustomException();
 
 app.UseAuthentication();
 app.UseAuthorization();
