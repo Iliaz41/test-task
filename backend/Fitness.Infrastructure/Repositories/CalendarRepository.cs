@@ -32,5 +32,16 @@ namespace Fitness.Infrastructure.Repositories
 
             return await query.FirstOrDefaultAsync(a => a.Guid == guid, tokenCancel);
         }
+
+        public async Task<Calendar?> GetDayAsync(DateTime day, CancellationToken cancellationToken)
+        {
+            cancellationToken.ThrowIfCancellationRequested();
+
+            var query = _context.Calendars
+                .AsNoTracking()
+                .Where(c => c.Day.Date == day.Date);
+
+            return await query.FirstOrDefaultAsync(cancellationToken);
+        }
     }
 }
