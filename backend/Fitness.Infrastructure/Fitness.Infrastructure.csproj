@@ -33,6 +33,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Fitness.Application\Fitness.Application.csproj" />
     <ProjectReference Include="..\Fitness.Domain\Fitness.Domain.csproj" />
   </ItemGroup>
 
