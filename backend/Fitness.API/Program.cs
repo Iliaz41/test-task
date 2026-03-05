@@ -20,20 +20,20 @@ builder.Services.AddCors(options =>
     options.AddPolicy("AllowFrontend", policy =>
     {
         policy.WithOrigins(
-                "http://localhost:3000",     // React dev server
-                "https://localhost:3000",    // HTTPS версия
-                "http://localhost:5000",     // Альтернативный порт
-                "https://localhost:5000"     // HTTPS альтернативный
+                "http://localhost:3000",     
+                "https://localhost:3000",    
+                "http://localhost:5000",     
+                "https://localhost:5000"     
             )
-            .AllowAnyMethod()                 // Разрешаем все HTTP методы (GET, POST, PUT, DELETE)
-            .AllowAnyHeader()                  // Разрешаем все заголовки
-            .AllowCredentials();               // Разрешаем куки/авторизацию
+            .AllowAnyMethod()                 
+            .AllowAnyHeader()                 
+            .AllowCredentials();              
     });
 
-    // Для разработки можно добавить более свободную политику
+    
     options.AddPolicy("Development", policy =>
     {
-        policy.AllowAnyOrigin()                 // ВНИМАНИЕ: только для разработки!
+        policy.AllowAnyOrigin()                 
               .AllowAnyMethod()
               .AllowAnyHeader();
     });
