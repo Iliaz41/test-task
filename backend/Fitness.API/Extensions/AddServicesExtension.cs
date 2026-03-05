@@ -9,6 +9,7 @@ namespace Fitness.API.Extensions
         {
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<ICalendarService, CalendarService>();
+            services.AddScoped<IExerciseSerivce, ExerciseService>();
 
             return services;
         }

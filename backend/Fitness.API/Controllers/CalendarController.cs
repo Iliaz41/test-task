@@ -19,7 +19,7 @@ namespace Fitness.API.Controllers
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status409Conflict)]
-        public async Task<ActionResult<CreateCalendarDTO>> Register([FromBody] CreateCalendarDTO createCalendarDTO, CancellationToken tokenCancel)
+        public async Task<ActionResult<CreateCalendarDTO>> CreateCalendar([FromBody] CreateCalendarDTO createCalendarDTO, CancellationToken tokenCancel)
         {
             var calendarDto = await _calendarService.CreateCalendarAsync(createCalendarDTO, tokenCancel);
 
