@@ -15,6 +15,30 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowFrontend", policy =>
+    {
+        policy.WithOrigins(
+                "http://localhost:3000",     
+                "https://localhost:3000",    
+                "http://localhost:5000",     
+                "https://localhost:5000"     
+            )
+            .AllowAnyMethod()                 
+            .AllowAnyHeader()                 
+            .AllowCredentials();              
+    });
+
+    
+    options.AddPolicy("Development", policy =>
+    {
+        policy.AllowAnyOrigin()                 
+              .AllowAnyMethod()
+              .AllowAnyHeader();
+    });
+});
+
 var app = builder.Build();
 
 app.UseCustomException();
@@ -27,6 +51,11 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
+    app.UseCors("Development");
+}
+else
+{
+    app.UseCors("AllowFrontend");
 }
 
 app.UseHttpsRedirection();
