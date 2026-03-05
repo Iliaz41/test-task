@@ -1,4 +1,6 @@
-﻿namespace Fitness.Application.DTOs.ExercisesDTO
+﻿using Fitness.Domain.Models;
+
+namespace Fitness.Application.DTOs.ExercisesDTO
 {
     public class ExerciseDTO
     {
@@ -11,5 +13,7 @@
         public long CalendarId { get; set; }
         public long MeasurementUnitId { get; set; }
         public long StatusId { get; set; }
+        public MeasurementUnit MeasurementUnit { get; set; } = null!;
+        public Status Status { get; set; } = null!;
     }
 }
